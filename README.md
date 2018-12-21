@@ -1,1 +1,2 @@
 # marketplace
+Market place is a web application where any user can be a buyer or seller. A user can buy or sell an article in the site. He/ She should have an account for this purpose. He/ She can modify his/ her profile and uploads articles he/she wants to sell and view these articles in his/her profile/products page. These articles can also be view, in real-time, in the home page when they are being uploaded. 
