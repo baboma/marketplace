@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "express": "^4.16.4",
+    "md5": "^2.2.1",
+    "mongo": "^0.1.0",
+    "mongoose": "^5.4.0",
+    "nodemon": "^1.18.9",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "devDependencies": {
+    "gulp-concat": "^2.6.1",
+    "multer": "^1.4.1"
+  }
+}

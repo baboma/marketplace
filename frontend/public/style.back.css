@@ -1,0 +1,123 @@
+@media (max-width: 640px) {
+	main,
+	nav,
+	aside,
+	.content {
+		display: block;
+		width: auto;
+	}
+}
+@font-face
+{
+	font-family: 'BallparkWeiner';
+	src: url('polices/ballpark.eot');
+	src: url('polices/ballpark.eot?#iefix') format('embeddedopentype'),
+	url('polices/ballpark.woff') format('woff'),
+	url('polices/ballpark.ttf') format('truetype'),
+	url('polices/ballpark.svg#BallparkWeiner') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face
+{
+	font-family: 'Dayrom';
+	src: url('polices/dayrom.eot');
+	src: url('polices/dayrom.eot?#iefix') format('embeddedopentype'),
+	url('polices/dayrom.woff') format('woff'),
+	url('polices/dayrom.ttf') format('truetype'),
+	url('polices/dayrom.svg#Dayrom') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/* ------------------------------------------------------- */
+html, body, div, p, ul, li, img, span, a, h1, h2, h3, h4 { 
+  margin: 0; 
+  padding: 0; 
+}
+html body div ul li a { 
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  color: #dde9ecfb;
+}
+body  {
+  background: url("images/background.jpg");
+}
+#root {
+  width: 90%;
+  margin: auto;
+}
+#my_home_page {
+  display: flex;
+	flex-direction: column;
+	min-height: 100vh; /*vh(viewport height): auteur de la fenêtre. 100% de l'intégralité de cette hauteur*/
+}
+.my_header {
+  display: flex;
+  flex-direction: column;
+}
+#my_logo {
+  align-self: flex-start;
+}
+.my_header ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.my_header ul li {
+  margin-left: 30px;
+}
+ul li.link a {
+  text-decoration: none;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  width: 60px;
+  height: 25px;
+  padding: 10px;
+  border: 1px solid #aca6a6d7;
+  border-radius: 2px;
+  background-color: #aca6a6d7;
+}
+ul li.link a:hover {
+  border: 1px solid #916464d0;
+  background-color: #916464d0;
+}
+.my_header ul li a img {
+  position: relative;
+  top: -3px;
+}
+#cart_num_item {
+  border: none;
+  color: antiquewhite;
+  font-weight: bold;
+  position: relative;
+  top: -15px;
+  left: -10px;
+}
+.my_section {
+  flex: 1 1 auto; /* flex-grow devient 1 */
+}
+/* footer */
+ .my_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  background-color: #ffffff;
+}
+.my_footer > * + * {
+  margin-left: 15px;
+}
+.my_footer span, a {
+  font-weight: bold;
+  font-size: 1em;
+  color: #0b0ff0ad;
+} 
+#footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#footer span {
+  height: 25px;
+}
