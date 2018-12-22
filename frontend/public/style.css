@@ -241,8 +241,8 @@ button.my_button img {
 }
 #product_img {
   align-self: center;
-  width: 200px;
-  height: 250px;
+  width: 150px;
+  /*height: 250px;*/
 }
 .ui_form {
   display: flex;

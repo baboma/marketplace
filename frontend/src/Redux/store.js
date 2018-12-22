@@ -9,7 +9,7 @@ var initialState = {
     btnLogin: false,
     userId: "",
     btnCart: false,
-
+    companyName: "",
 };
 
 /***********
@@ -37,6 +37,8 @@ function reducer(state, action)
             return { ...state, userId: action.payload };
         case 'setCartBtn':
             return { ...state, btnCart: action.payload };
+            case 'setCompanyName':
+            return { ...state, companyName: action.payload };
         default:
             return state;
     }

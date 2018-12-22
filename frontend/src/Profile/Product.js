@@ -12,7 +12,7 @@ class Product extends Component {
       productName: "",
       brandName: "",
       productDesc: "",
-      productPrice: 0,
+      productPrice: "",
       productQty: 0,
       productCat: "",
       selectedFile: null,
@@ -26,7 +26,7 @@ class Product extends Component {
     this.handleProductCategory = this.handleProductCategory.bind(this);
     this.handleUploadProduct = this.handleUploadProduct.bind(this);
     this.getSellerProducts = this.getSellerProducts.bind(this);
-    this.handleproductPrice = this.handleproductPrice.bind(this);
+    this.handleProductPrice = this.handleProductPrice.bind(this);
   }
 
   show = dimmer => () => this.setState({ dimmer, open: true });
@@ -63,8 +63,8 @@ class Product extends Component {
     this.setState({productCat: event.target.value});
   }
 
-  handleproductPrice(event) {
-    this.setState({productPrice: parseFloat(event.targer.value)})
+  handleProductPrice(event) {
+    this.setState({productPrice: event.target.value});
   }
 
   handleUploadProduct(event) {
@@ -79,6 +79,7 @@ class Product extends Component {
     formData.append('product_qty', this.state.productQty);
     formData.append('product_cat', this.state.productCat);
     formData.append('productImage', this.state.selectedFile);
+    formData.append('product_seller', this.props.CompanyName);
     
     fetch('/upload', {
       method: 'POST',
@@ -128,7 +129,14 @@ class Product extends Component {
   }
 
   render() {
+    const nf = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'CAD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
     const { open, dimmer } = this.state;
+    var my_products;
     const my_modal = (
       <Modal dimmer={dimmer} open={open} onClose={this.close}>
         <Modal.Header>Add an item</Modal.Header>
@@ -160,7 +168,7 @@ class Product extends Component {
                   </div>
                 </div>
                 <div className="field" id="field">
-                  <label htmlFor="brand-name">Price</label>
+                  <label htmlFor="product-price">Price</label>
                   <div className="ui input">
                     <input type="text" id="product-price" placeholder="Product price" 
                       onChange={this.handleProductPrice} required/>
@@ -205,7 +213,10 @@ class Product extends Component {
       </Modal>
     ); 
     //<div className="one wide column" key={'div03'+ind}></div>
-    const my_products = (<div className="ui celled grid">
+    if(this.state.products.length === 0) {
+      my_products = <div>No articles...</div>
+    } else {
+      my_products = (<div className="ui celled grid">
       {this.state.products.map((product, ind) => {
         return(<div className="row" key={'div01'+ind}>
           <div className="three wide column" key={'div02'+ind}>
@@ -227,6 +238,14 @@ class Product extends Component {
               </p>
               <p className="ui label">
                 {product.brandname}
+              </p>
+            </p>
+            <p id="contents">
+              <p className="ui blue label">
+                <b>Price</b>:
+              </p>
+              <p className="ui label">
+                {nf.format(product.productprice)}
               </p>
             </p>
             <p id="contents">
@@ -270,10 +289,11 @@ class Product extends Component {
               </button>
             </div>
           </div>
-
         </div>);
       })}<br/>
     </div>);
+    }
+    
     
     return(<div>
       <h3 className="ui header">My products</h3>
@@ -295,6 +315,7 @@ function mapStateToProps(state) {
     Pseudo: state.pseudo,
     BtnLogin: state.btnLogin,
     UserId: state.userId,
+    CompanyName: state.companyName,
     //LoggedOut: state.loggedOut,
     //BtnProfile: state.btnProfile,
   }
