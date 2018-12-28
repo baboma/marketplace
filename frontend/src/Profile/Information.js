@@ -47,10 +47,7 @@ class Information extends Component {
         country: this.state.country,
         phonenumber: this.state.phonenumber,
         companyname: this.state.companyname,
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      })
     }).then(x => {
       return x.text();
     }).then(res => {
@@ -127,7 +124,6 @@ class Information extends Component {
         this.setState({country: infos.country});
         this.setState({phonenumber: infos.phonenumber});
         this.setState({companyname: infos.companyname});
-        this.props.dispatch({ type: "setCompanyName", payload: infos.companyname });
       } 
     })
   }

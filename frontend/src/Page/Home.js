@@ -43,29 +43,21 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    setInterval(this.getAllProducts, 400);
+    setInterval(this.getAllProducts, 500);
     //this.getAllProducts();
   }
 
   render() {
-    const nf = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'CAD',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    });
     const allproducts = (<div id="grid-4_xs-2" className="grid-4_xs-2">
       {this.state.allProducts.map((product, ind) => {
         return(<div className="col" key={"div01"+ind}>
           <div className="ui card" key={"div02"+ind}>
-            <img src={"uploads\\"+product.productimage} className="ui centered image" alt="" width="150px"/>
+            <img src={"uploads\\"+product.productimage} className="ui image" alt=""/>
             <div className="content" key={"div03"+ind}>
               <div className="header">{product.productname}</div>
-              <div className="header">{nf.format(product.productprice)}</div>
-              <div className="meta">{product.brandname}</div>
-              <div className="header">Sold by:&nbsp;{product.productseller}</div>
+              <div className="meta">{product.productprice}</div>
               <div className="description">
-                {product.productdesc}
+                ---------
               </div>
             </div>
             <div className="extra content" key={"div04"+ind}>

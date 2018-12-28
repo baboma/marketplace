@@ -186,7 +186,7 @@ app.post('/updateprofil', (req, res) => {
       informations: my_infos
     }
   }, function(err, result) {
-    if(err) {
+    if(err){
       throw err;
     } else {
       if(result) {
@@ -230,16 +230,13 @@ app.post('/upload', upload.single('productImage'), (req, res) => {
   const userid = req.body.user_id;
   var dbo = db.db("decodedb");
   var product_infos = {
-    productid: create_UUID(),
     posted_date: new Date(),
     productname: req.body.product_name,
     brandname: req.body.brand_name,
-    productprice: req.body.product_price,
     productdesc: req.body.product_desc,
     productqty: req.body.product_qty,
     productcat: req.body.product_cat,
-    productimage: req.file.filename,
-    productseller: req.body.product_seller
+    productimage: req.file.filename
   }
   //products_array = products_array.concat(product_infos);
   var dbo = db.db("decodedb");
@@ -279,7 +276,7 @@ app.post('/sellerProducts', (req, res) => {
     if(err){
       throw err;
     } else {
-      if(JSON.stringify(result) !== JSON.stringify({})) {
+      if(result) {
         res.send(JSON.stringify({status: true, result}));
       } else {
         res.send(JSON.stringify({status: false, result}));
